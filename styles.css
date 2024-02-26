@@ -1,0 +1,32 @@
+#game {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+}
+header {
+  display: flex;
+  justify-items: center;
+}
+
+#container {
+  height: 200px;
+  width: 200px;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(3, auto);
+}
+.patrat {
+  /* height: 100px;
+  width: 100px; */
+  border: solid 0.5px;
+  border-color: black;
+  cursor: pointer;
+}
+.patrat:hover {
+  background-color: #f0f0f0;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.patrat.clicked {
+  background-color: #f0f0f0;
+}
