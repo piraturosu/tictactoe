@@ -10,26 +10,19 @@ const WINS = [
   [2, 4, 6],
 ];
 
-let count = 0;
 let message = document.getElementById('message');
-let turn = false;
+let turn = true;
 
 function storeClickedId(clickedId) {
   // console.log(clickedId);
-  BOARD[clickedId] = turn === ;
-  turn = !turn;
-  if ((count & 1) === 0) {
-    BOARD[clickedId] = true;
-    document.getElementById(`${clickedId}`).innerText = 'X';
-    count += 1;
-    console.log('1111111', count, BOARD);
-  } else {
-    BOARD[clickedId] = false;
-    document.getElementById(`${clickedId}`).innerText = 'O';
-    count += 1;
-    console.log('22222222', count, BOARD);
-  }
+  if (BOARD[clickedId] !== null) return;
 
+  BOARD[clickedId] = turn;
+  document.getElementById(`${clickedId}`).innerText = turn ? 'X' : 'O';
+  turn = !turn;
+  const count = BOARD.filter((el) => {
+    return el !== null;
+  }).length;
   if (count < 5) return;
 
   console.log('verific');

@@ -1,0 +1,3 @@
+separa in doua functii
+tictactoe care face doar logica si nu are html
+functie care se ocupa de UI
