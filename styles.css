@@ -9,7 +9,7 @@ header {
   justify-items: center;
 }
 
-#container {
+#boardView {
   height: auto;
   width: auto;
   display: grid;

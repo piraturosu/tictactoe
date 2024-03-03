@@ -16,23 +16,20 @@ let turn = false;
 
 function storeClickedId(clickedId) {
   // console.log(clickedId);
-  BOARD[clickedId] = turn === ;
+  BOARD[clickedId] = turn;
   turn = !turn;
   if ((count & 1) === 0) {
     BOARD[clickedId] = true;
     document.getElementById(`${clickedId}`).innerText = 'X';
     count += 1;
-    console.log('1111111', count, BOARD);
   } else {
     BOARD[clickedId] = false;
     document.getElementById(`${clickedId}`).innerText = 'O';
     count += 1;
-    console.log('22222222', count, BOARD);
   }
 
   if (count < 5) return;
 
-  console.log('verific');
   for (let i = 0; i !== WINS.length; ++i) {
     console.log(BOARD[WINS[i][0]], 'verific');
     const value = BOARD[WINS[i][0]];

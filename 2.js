@@ -25,7 +25,6 @@ function storeClickedId(clickedId) {
   }).length;
   if (count < 5) return;
 
-  console.log('verific');
   for (let i = 0; i !== WINS.length; ++i) {
     console.log(BOARD[WINS[i][0]], 'verific');
     const value = BOARD[WINS[i][0]];

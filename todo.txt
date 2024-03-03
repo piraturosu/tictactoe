@@ -1,3 +1,4 @@
-separa in doua functii
-tictactoe care face doar logica si nu are html
-functie care se ocupa de UI
+player wins sa dispara dupa 5 secunde
+player wins sa fie sub titlu
+scoreboard sa fie afisat in stanga si in drepta titlului
+boardview sa fie inalta cat toata pagina si centrata pe orizontala
