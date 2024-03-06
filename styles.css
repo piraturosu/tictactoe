@@ -1,30 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+
+body {
+  font-family: 'Anta', sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  opacity: 0;
+  animation: fadeIn 1.25s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    color: blue;
+    background-color: antiquewhite;
+  }
+  to {
+    opacity: 1;
+    color: pink;
+    background-color: cadetblue;
+  }
+}
+
 #game {
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  /* width: 95vw;
+  height: 95vh; */
 }
 header {
   display: flex;
   justify-items: center;
+  justify-content: space-around;
+  align-items: baseline;
+  /* width: 50vw; */
+}
+
+h1 {
+  margin: 0;
 }
 
 #boardView {
-  height: auto;
-  width: auto;
   display: grid;
-  grid-template-columns: repeat(3, 75px);
-  grid-template-rows: repeat(3, 75px);
+  grid-template-columns: repeat(3, 200px);
+  grid-template-rows: repeat(3, 200px);
+  margin: 15px auto 0 auto;
 }
 .patrat {
-  /* height: 100px;
-  width: 100px; */
   border: solid 0.5px;
   border-color: black;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
+  /* font-size: calc(0.9 * min(100%, 200px)); */
+  font-size: 100px;
 }
 .patrat:hover {
   background-color: #f0f0f0;
@@ -32,4 +63,20 @@ header {
 }
 .patrat.clicked {
   background-color: #f0f0f0;
+}
+
+#message {
+  height: 40px;
+  width: 150px;
+  text-align: center;
+}
+
+#messageBoard {
+  display: flex;
+  width: 600px;
+  justify-content: space-around;
+}
+
+.hidden {
+  display: none;
 }
