@@ -4,21 +4,12 @@ body {
   font-family: 'Anta', sans-serif;
   font-weight: 400;
   font-style: normal;
-  opacity: 0;
-  animation: fadeIn 1.25s ease-in-out forwards;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    color: blue;
-    background-color: antiquewhite;
-  }
-  to {
-    opacity: 1;
-    color: pink;
-    background-color: cadetblue;
-  }
+  /* opacity: 0; */
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  /* display: grid; */
 }
 
 #game {
@@ -26,15 +17,15 @@ body {
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  /* width: 95vw;
-  height: 95vh; */
+  background-color: red;
 }
+
 header {
   display: flex;
   justify-items: center;
   justify-content: space-around;
   align-items: baseline;
-  /* width: 50vw; */
+  margin-top: 50px;
 }
 
 h1 {
@@ -42,10 +33,28 @@ h1 {
 }
 
 #boardView {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: grid;
   grid-template-columns: repeat(3, 200px);
   grid-template-rows: repeat(3, 200px);
-  margin: 15px auto 0 auto;
+  margin: auto;
+  animation: fadeIn 1.25s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    /* color: blue;
+    background-color: antiquewhite; */
+  }
+  to {
+    opacity: 1;
+    /* color: pink;
+    background-color: cadetblue; */
+  }
 }
 .patrat {
   border: solid 0.5px;
@@ -54,8 +63,8 @@ h1 {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* font-size: calc(0.9 * min(100%, 200px)); */
   font-size: 100px;
+  background-color: blue;
 }
 .patrat:hover {
   background-color: #f0f0f0;
@@ -69,14 +78,25 @@ h1 {
   height: 40px;
   width: 150px;
   text-align: center;
+  font-size: 30px;
+  margin-top: 2.5vh;
 }
 
-#messageBoard {
+#infoBoard {
   display: flex;
   width: 600px;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1.75vh;
 }
 
 .hidden {
   display: none;
+}
+
+.scoreboard {
+  align-self: baseline;
+  margin-top: 1.5vh;
+  width: 10vw;
+  text-align: center;
 }
