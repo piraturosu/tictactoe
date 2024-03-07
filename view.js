@@ -1,10 +1,10 @@
 const message = document.getElementById('message');
 const boardView = document.getElementById('boardView');
-const scoreboards = document.getElementsByClassName('scoreboard');
-const scoreboardP1 = scoreboards[0];
-const scoreboardP2 = scoreboards[1];
-scoreboardP1.innerText = `Player 1: ${SCORE.PLAYER1}`;
-scoreboardP2.innerText = `Player 2: ${SCORE.PLAYER2}`;
+const scoreTexts = document.getElementsByClassName('scoreText');
+const scoreTextP1 = scoreTexts[0];
+const scoreTextP2 = scoreTexts[1];
+scoreTextP1.innerText = `Player 1: ${SCORE.PLAYER1}`;
+scoreTextP2.innerText = `Player 2: ${SCORE.PLAYER2}`;
 
 let timer;
 
@@ -25,12 +25,12 @@ function play(id) {
 
 function showResults(result) {
   message.innerHTML = `<b>${TURN}</b> wins!`;
-  scoreboardP1.innerText = `Player 1: ${SCORE.PLAYER1}`;
-  scoreboardP2.innerText = `Player 2: ${SCORE.PLAYER2}`;
+  scoreTextP1.innerText = `Player 1: ${SCORE.PLAYER1}`;
+  scoreTextP2.innerText = `Player 2: ${SCORE.PLAYER2}`;
 }
 
 function deleteMessage() {
-  message.innerHTML = ``;
+  // message.innerHTML = ``;
 }
 
 function createBoardCellButton(index) {

@@ -4,32 +4,51 @@ body {
   font-family: 'Anta', sans-serif;
   font-weight: 400;
   font-style: normal;
-  /* opacity: 0; */
   width: 100vw;
   height: 100vh;
   margin: 0;
   padding: 0;
-  /* display: grid; */
+  background-color: rosybrown;
+  color: coral;
 }
 
-#game {
+#header {
   display: flex;
   flex-direction: column;
   justify-items: center;
+  margin-top: 2.5vh;
+  background-color: rgb(33, 15, 134);
   align-items: center;
-  background-color: red;
-}
-
-header {
-  display: flex;
-  justify-items: center;
-  justify-content: space-around;
-  align-items: baseline;
-  margin-top: 50px;
 }
 
 h1 {
   margin: 0;
+  font-size: 50px;
+}
+
+.scoreText {
+  margin-top: 1.5vh;
+  width: 10vw;
+  text-align: center;
+  font-size: 25px;
+  min-width: 150px;
+}
+
+#infoBoard {
+  min-width: 800px;
+  min-height: 7vh;
+  display: flex;
+  width: 60vw;
+  justify-content: space-around;
+  margin-top: 1.75vh;
+  align-self: center;
+}
+
+#message {
+  width: 100vw;
+  text-align: center;
+  font-size: 40px;
+  margin-top: 0.5vh;
 }
 
 #boardView {
@@ -38,8 +57,8 @@ h1 {
   left: 50%;
   transform: translate(-50%, -50%);
   display: grid;
-  grid-template-columns: repeat(3, 200px);
-  grid-template-rows: repeat(3, 200px);
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   margin: auto;
   animation: fadeIn 1.25s ease-in-out;
 }
@@ -47,16 +66,19 @@ h1 {
 @keyframes fadeIn {
   from {
     opacity: 0;
-    /* color: blue;
-    background-color: antiquewhite; */
   }
   to {
     opacity: 1;
-    /* color: pink;
-    background-color: cadetblue; */
   }
 }
+
 .patrat {
+  width: 10vw;
+  height: 10vw;
+  min-width: 150px;
+  min-height: 150px;
+  max-width: 200px;
+  max-height: 200px;
   border: solid 0.5px;
   border-color: black;
   cursor: pointer;
@@ -64,39 +86,16 @@ h1 {
   align-items: center;
   justify-content: center;
   font-size: 100px;
-  background-color: blue;
+  background-color: royalblue;
+  color: coral;
+  text-shadow: #000 1px 1px 12px;
 }
 .patrat:hover {
-  background-color: #f0f0f0;
   box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
-}
-.patrat.clicked {
-  background-color: #f0f0f0;
-}
-
-#message {
-  height: 40px;
-  width: 150px;
-  text-align: center;
-  font-size: 30px;
-  margin-top: 2.5vh;
-}
-
-#infoBoard {
-  display: flex;
-  width: 600px;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 1.75vh;
+  background-color: coral;
+  color: royalblue;
 }
 
 .hidden {
   display: none;
-}
-
-.scoreboard {
-  align-self: baseline;
-  margin-top: 1.5vh;
-  width: 10vw;
-  text-align: center;
 }
