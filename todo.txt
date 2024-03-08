@@ -1,1 +1,0 @@
-boardul sa faca fade-in pe body si sa aiba alta culoare decat body

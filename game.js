@@ -1,4 +1,4 @@
-const TURNS = { PLAYER1: 'X', PLAYER2: 'O' };
+const TURNS = { PLAYER1: "X", PLAYER2: "O" };
 const WINNING_PATTERNS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -14,12 +14,14 @@ let BOARD;
 
 function resetState() {
   BOARD = [null, null, null, null, null, null, null, null, null];
-  TURN = TURNS.PLAYER2;
+  TURN = TURNS.PLAYER1;
 }
 
 function ticTacToe(id) {
-  TURN = TURN === TURNS.PLAYER1 ? TURNS.PLAYER2 : TURNS.PLAYER1;
+  if (BOARD[id] !== null) throw "Already played this box!";
+
   BOARD[id] = TURN;
+  TURN = TURN === TURNS.PLAYER1 ? TURNS.PLAYER2 : TURNS.PLAYER1;
 
   const countPlays = BOARD.filter((el) => el !== null).length;
   if (countPlays < 5) return;
@@ -32,8 +34,17 @@ function ticTacToe(id) {
       value === BOARD[WINNING_PATTERNS[i][1]] &&
       value === BOARD[WINNING_PATTERNS[i][2]]
     ) {
+      storeScore(value);
+      resetState();
+
       return value;
     }
+  }
+
+  if (countPlays === 9) {
+    resetState();
+
+    return "DRAW";
   }
 }
 

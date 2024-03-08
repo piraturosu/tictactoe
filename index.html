@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>TicTacToe</title>
+    <title>❌ - TicTacToe - ⭕</title>
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <div id="header">
-      <div id="infoBoard">
-        <div class="scoreText"></div>
-        <h1>Tic Tac Toe</h1>
-        <div class="scoreText"></div>
+      <div id="scoreGroup">
+        <p class="scoreText text-left"></p>
+        <p id="gameText">Tic Tac Toe</p>
+        <p class="scoreText text-right"></p>
       </div>
-      <div id="message"></div>
+      <p id="infoText" class="hidden"></p>
     </div>
-    <div id="boardView"></div>
+    <div id="board"></div>
   </body>
   <script src="game.js"></script>
   <script src="score.js"></script>
