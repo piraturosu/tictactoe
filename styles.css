@@ -1,11 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Anta&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 
 body {
   width: 100vw;
   margin: 0;
   padding: 0;
 
-  font-family: 'Anta', sans-serif;
+  font-family: "Anta", sans-serif;
   font-weight: 400;
   font-style: normal;
 
@@ -110,6 +110,7 @@ body {
   justify-content: center;
 
   outline: 0.3vh solid #000;
+  /* border: 0.3vh solid #000; */
   background-color: royalblue;
   color: coral;
   text-shadow: #000 0.2vh 0.2vh 1.2vh;
@@ -124,6 +125,10 @@ body {
 
 .hidden {
   display: none;
+}
+
+.semi-opaque {
+  opacity: 0.5;
 }
 
 @keyframes fadeIn {

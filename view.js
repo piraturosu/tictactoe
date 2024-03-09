@@ -31,7 +31,7 @@ function handleBoardCellClick(event) {
 
     cell.innerHTML = BOARD[cell.dataset.index];
     cell.style.backgroundColor = "crimson";
-  } catch(error) {
+  } catch (error) {
     showInfoText(error);
   }
 }
@@ -39,7 +39,7 @@ function handleBoardCellClick(event) {
 function handleBoardCellEnter(event) {
   const cell = event.target;
 
-  cell.style.opacity = 0.5;
+  cell.classList.add("semi-opaque");
 
   if (BOARD[cell.dataset.index] === null) cell.innerHTML = TURN;
   else cell.style.backgroundColor = "crimson";
@@ -48,7 +48,7 @@ function handleBoardCellEnter(event) {
 function handleBoardCellLeave(event) {
   const cell = event.target;
 
-  cell.style.opacity = 1;
+  cell.classList.remove("semi-opaque");
 
   if (BOARD[cell.dataset.index] === null) cell.innerHTML = "";
   else cell.style.backgroundColor = "royalblue";

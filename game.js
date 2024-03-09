@@ -12,9 +12,9 @@ const WINNING_PATTERNS = [
 let TURN;
 let BOARD;
 
-function resetState() {
-  BOARD = [null, null, null, null, null, null, null, null, null];
-  TURN = TURNS.PLAYER1;
+  function resetState() {
+    BOARD = [null, null, null, null, null, null, null, null, null];
+    TURN = TURNS.PLAYER1;
 }
 
 function ticTacToe(id) {
