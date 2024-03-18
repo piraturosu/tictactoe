@@ -10,16 +10,25 @@
     <div id="header">
       <div id="scoreGroup">
         <input type="text" class="hidden" />
-        <p class="text-left scoreText"></p>
+        <div class="text-left playerText">
+          <p class="playerName"></p>
+          <p>--</p>
+          <p class="scoreText"></p>
+        </div>
         <p id="gameText">Tic Tac Toe</p>
         <input type="text" class="hidden" />
-        <p class="text-right scoreText"></p>
+        <div class="text-right playerText">
+          <p class="scoreText"></p>
+          <p style="overflow: hidden">--</p>
+          <p class="playerName"></p>
+        </div>
       </div>
       <p id="infoText" class="hidden"></p>
     </div>
     <div id="board"></div>
   </body>
   <script src="game.js"></script>
+  <script src="viewPlayerName.js"></script>
   <script src="score.js"></script>
   <script src="view.js"></script>
 </html>

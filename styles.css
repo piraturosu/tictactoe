@@ -13,6 +13,15 @@ body {
   color: coral;
 }
 
+input {
+  min-width: 11.25vh;
+  width: 15vh;
+  max-width: calc(15vw - 0.75vh);
+  margin: 0;
+
+  font-size: 2vh;
+}
+
 #header {
   position: absolute;
   left: 50%;
@@ -39,7 +48,7 @@ body {
   align-items: center;
 }
 
-.scoreText {
+.playerText {
   min-width: 11.25vh;
   width: 15vh;
   max-width: calc(15vw - 0.75vh);
@@ -64,10 +73,18 @@ body {
 }
 
 .text-left {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-left: 1vh;
   text-align: left;
 }
 .text-right {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
   margin-right: 1vh;
   text-align: right;
 }
