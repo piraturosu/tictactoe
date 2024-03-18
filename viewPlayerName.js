@@ -33,7 +33,8 @@ function handlePlayerNameKeyDown(event) {
     showInfoText("Name must have minimum 3 characters");
     return;
   }
-  updateNameAndScore(inputValue, event.target === playerNameInputLeft ? 0 : 1);
+  setName(inputValue, event.target === playerNameInputLeft ? 0 : 1);
+  showScores();
   hidePlayerNameInput(event);
   showNames();
 }
@@ -56,31 +57,8 @@ function showPlayerNameInput(event) {
   which.classList.remove("hidden");
 }
 
-function setName(name, index) {
-  NAMES[index] = name;
-  setNamesLocalStorage();
-}
 
-function updateNameAndScore(name, index) {
-  setName(name, index);
-  showScores();
-}
-
-//setting names in local storage
-function verifyNamesLocalStorage() {
-  if (!localStorage.NAMES) localStorage.setItem("NAMES", JSON.stringify(NAMES));
-  getNamesLocalStorage();
-}
-
-function getNamesLocalStorage() {
-  NAMES = JSON.parse(localStorage.getItem("NAMES"));
-}
-
-function setNamesLocalStorage() {
-  localStorage.NAMES = JSON.stringify(NAMES);
-}
-
-verifyNamesLocalStorage();
+getNamesLocalStorage();
 
 playerNameLeft.addEventListener("click", showPlayerNameInput);
 playerNameRight.addEventListener("click", showPlayerNameInput);
