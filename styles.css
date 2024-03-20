@@ -1,5 +1,16 @@
 @import url("https://fonts.googleapis.com/css2?family=Anta&display=swap");
 
+/*
+element {
+  1. positional props
+  2.a size props
+  2.b font props
+  2.c margin padding border outline
+  3. layout (type of display + related props)
+  4. colors
+}
+*/
+
 body {
   width: 100vw;
   margin: 0;
@@ -17,9 +28,27 @@ input {
   min-width: 11.25vh;
   width: 15vh;
   max-width: calc(15vw - 0.75vh);
-  margin: 0;
 
+  margin: 0;
+  border: 0;
+
+  font-family: "Anta", sans-serif;
+  font-weight: 400;
+  font-style: normal;
   font-size: 2vh;
+  text-shadow: #000 0.2vh 0.2vh 0.2vh;
+  text-align: center;
+
+  color: coral;
+  background-color: royalblue;
+}
+
+input:focus {
+  padding: 0;
+  border: 0;
+  outline: none;
+
+  border-color: transparent;
 }
 
 #header {
@@ -56,6 +85,8 @@ input {
 
   font-size: 2vh;
 
+  display: flex;
+
   box-sizing: border-box;
   align-self: center;
 }
@@ -69,24 +100,19 @@ input {
   font-size: 4vh;
 
   text-align: center;
-  align-self: center;
 }
 
-.text-left {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+.justify-left {
+  justify-content: left;
+}
+.justify-right {
+  justify-content: right;
+}
+.margin-left {
   margin-left: 1vh;
-  text-align: left;
 }
-.text-right {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
+.margin-right {
   margin-right: 1vh;
-  text-align: right;
 }
 
 #infoText {
