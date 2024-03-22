@@ -4,6 +4,3 @@ function storeScore(result) {
   if (result === TURNS.PLAYER1) SCORE.PLAYER1 += 1;
   else if (result === TURNS.PLAYER2) SCORE.PLAYER2 += 1;
 }
-
-
-

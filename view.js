@@ -11,7 +11,7 @@ function showInfoText(text) {
   infoTextElement.innerHTML = text;
   infoTextElement.classList.remove("hidden");
 
-  if (infoTextTimerId) clearTimeout(infoTextTimerId);
+  clearTimeout(infoTextTimerId);
   infoTextTimerId = setTimeout(hideInfoText, 3000);
 }
 
@@ -84,5 +84,5 @@ function play(id) {
 }
 
 resetBoardView();
-showNames();
+showPlayerNames();
 showScores();

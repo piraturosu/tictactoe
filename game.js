@@ -1,6 +1,7 @@
 const TURNS = { PLAYER1: "X", PLAYER2: "O" };
 const NAMES = ["X", "O"];
 
+const BOARD = [null, null, null, null, null, null, null, null, null];
 const WINNING_PATTERNS = [
   [0, 1, 2],
   [3, 4, 5],
@@ -11,17 +12,18 @@ const WINNING_PATTERNS = [
   [0, 4, 8],
   [2, 4, 6],
 ];
+
 let TURN;
-let BOARD;
 
 function resetState() {
-  BOARD = [null, null, null, null, null, null, null, null, null];
+  for (let i = 0; i !== 9; ++i) BOARD[i] = null;
+
   TURN = TURNS.PLAYER1;
 }
 
-function setName(name, index) {
+function setPlayerName(index, name) {
   NAMES[index] = name;
-  setNamesLocalStorage(name, index);
+  setPlayerNamesLocalStorage(name, index);
 }
 
 function ticTacToe(id) {
@@ -56,3 +58,4 @@ function ticTacToe(id) {
 }
 
 resetState();
+getNamesLocalStorage();

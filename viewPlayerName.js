@@ -1,33 +1,34 @@
-const playerInfoContainer = document.getElementsByClassName("playerText");
-const playerLeftInfoContainer = playerInfoContainer[0];
-const playerRightInfoContainer = playerInfoContainer[1];
-const scoreText = document.getElementsByClassName("scoreText");
-const scoreTextLeft = scoreText[0];
-const scoreTextRight = scoreText[1];
-const playerName = document.getElementsByClassName("playerName");
-const playerNameLeft = playerName[0];
-const playerNameRight = playerName[1];
-const inputs = document.querySelectorAll("input");
-const playerNameInputLeft = inputs[0];
-const playerNameInputRight = inputs[1];
+const playerInfoContainers = document.getElementsByClassName("playerInfoGroup");
+const playerInfoContainerLeft = playerInfoContainers[0];
+const playerInfoContainerRight = playerInfoContainers[1];
+const scoreTexts = document.getElementsByClassName("scoreText");
+const scoreTextLeft = scoreTexts[0];
+const scoreTextRight = scoreTexts[1];
+const playerNameTexts = document.getElementsByClassName("playerNameText");
+const playerNameTextLeft = playerNameTexts[0];
+const playerNameTextRight = playerNameTexts[1];
+const playerNameInputs = document.querySelectorAll("input");
+const playerNameInputLeft = playerNameInputs[0];
+const playerNameInputRight = playerNameInputs[1];
 
-function showNames() {
-  playerNameLeft.innerText = `${NAMES[0]}`;
-  playerNameRight.innerText = `${NAMES[1]}`;
+function showPlayerNames() {
+  playerNameTextLeft.innerText = `${NAMES[0]}`;
+  playerNameTextRight.innerText = `${NAMES[1]}`;
 }
 
-function handlePlayerNameKeyDown(event) {
+function handlePlayerNameInputKeyDown(event) {
   if (event.key === "Escape") {
     hidePlayerNameInput(event);
-    document.removeEventListener("click", handleClickOutsideInput);
+    document.removeEventListener("click", handleDocumentClick);
     return;
   }
   if (event.key !== "Enter") return;
 
   const regex = /^[A-Za-z0-9]+$/;
   const inputValue = event.target.value;
+
   if (!regex.test(inputValue)) {
-    showInfoText("Only Letters and Numbers accepted");
+    showInfoText("Only letters and numbers accepted");
     return;
   }
   if (inputValue.length > 8) {
@@ -38,82 +39,94 @@ function handlePlayerNameKeyDown(event) {
     showInfoText("Name must have minimum 3 characters");
     return;
   }
-  setName(inputValue, event.target === playerNameInputLeft ? 0 : 1);
-  showScores();
+
+  const index = event.target === playerNameInputLeft ? 0 : 1;
+  setPlayerName(index, inputValue);
   hidePlayerNameInput(event);
-  showNames();
-  document.removeEventListener("click", handleClickOutsideInput);
+  showPlayerNames();
+  showScores();
+
+  document.removeEventListener("click", handleDocumentClick);
 }
 
-function handleClickOutsideInput(event) {
-  let ev;
-  console.log("in handleClick");
+function handleDocumentClick(event) {
   if (
     playerNameInputLeft.classList.contains("hidden") &&
     playerNameInputRight.classList.contains("hidden")
   ) {
-    console.log("both hidden");
     return;
   }
+
   if (
-    !playerNameInputLeft.classList.contains("hidden") &&
-    event.target !== playerNameLeft
+    event.target === playerNameInputLeft ||
+    event.target === playerNameInputRight
   ) {
-    console.log("in handleClick");
-    ev = { target: playerNameInputLeft };
-    setName(playerNameInputLeft.value, 0);
-    hidePlayerNameInput(ev);
-    showNames();
-    document.removeEventListener("click", handleClickOutsideInput);
+    return;
   }
-  if (
-    !playerNameInputRight.classList.contains("hidden") &&
-    event.target !== playerNameRight
-  ) {
-    ev = { target: playerNameInputRight };
-    setName(playerNameInputRight.value, 1);
-    hidePlayerNameInput(ev);
-    showNames();
-    document.removeEventListener("click", handleClickOutsideInput);
+
+  // const [index, inputElement] = playerNameInputRight.classList.contains(
+  //   "hidden",
+  // )
+  //   ? [0, playerNameInputLeft]
+  //   : [1, playerNameInputRight];
+  // setPlayerName(index, inputElement.value);
+  // hidePlayerNameInput({ target: inputElement });
+
+  if (playerNameInputRight.classList.contains("hidden")) {
+    setPlayerName(0, playerNameInputLeft.value);
+    hidePlayerNameInput({ target: playerNameInputLeft });
+  } else {
+    setPlayerName(1, playerNameInputRight.value);
+    hidePlayerNameInput({ target: playerNameInputRight });
   }
+
+  showPlayerNames();
+  document.removeEventListener("click", handleDocumentClick);
 }
 
 function hidePlayerNameInput(event) {
   event.target.classList.add("hidden");
 
-  const elContainer =
+  const containerElement =
     event.target === playerNameInputLeft
-      ? playerLeftInfoContainer
-      : playerRightInfoContainer;
+      ? playerInfoContainerLeft
+      : playerInfoContainerRight;
 
-  elContainer.classList.remove("hidden");
+  containerElement.classList.remove("hidden");
 }
 
 function showPlayerNameInput(event) {
-  let ev;
   if (!playerNameInputLeft.classList.contains("hidden"))
-    ev = { target: playerNameInputLeft };
-  if (!playerNameInputRight.classList.contains("hidden"))
-    ev = { target: playerNameInputRight };
-  if (ev) hidePlayerNameInput(ev);
+    hidePlayerNameInput({ target: playerNameInputLeft });
+  else hidePlayerNameInput({ target: playerNameInputRight });
 
   event.target.closest("div").classList.add("hidden");
-  console.log("in showPlayer");
 
-  const [elInput, index] =
-    event.target === playerNameLeft
-      ? [playerNameInputLeft, 0]
-      : [playerNameInputRight, 1];
+  // const [index, inputElement] =
+  //   event.target === playerNameTextLeft
+  //     ? [0, playerNameInputLeft]
+  //     : [1, playerNameInputRight];
+  // inputElement.value = NAMES[index];
+  // inputElement.classList.remove("hidden");
+  // inputElement.focus();
 
-  elInput.value = NAMES[index];
-  elInput.classList.remove("hidden");
-  elInput.focus();
-  document.addEventListener("click", handleClickOutsideInput);
+  if (event.target === playerNameTextLeft) {
+    playerNameInputLeft.value = NAMES[0];
+    playerNameInputLeft.classList.remove("hidden");
+    playerNameInputLeft.focus();
+  } else {
+    playerNameInputRight.value = NAMES[1];
+    playerNameInputRight.classList.remove("hidden");
+    playerNameInputRight.focus();
+  }
+
+  document.addEventListener("click", handleDocumentClick);
+
+  // prevent the handleClickOutsideInput being called
+  event.stopPropagation();
 }
 
-getNamesLocalStorage();
-
-playerNameLeft.addEventListener("click", showPlayerNameInput);
-playerNameRight.addEventListener("click", showPlayerNameInput);
-playerNameInputLeft.addEventListener("keydown", handlePlayerNameKeyDown);
-playerNameInputRight.addEventListener("keydown", handlePlayerNameKeyDown);
+playerNameTextLeft.addEventListener("click", showPlayerNameInput);
+playerNameTextRight.addEventListener("click", showPlayerNameInput);
+playerNameInputLeft.addEventListener("keydown", handlePlayerNameInputKeyDown);
+playerNameInputRight.addEventListener("keydown", handlePlayerNameInputKeyDown);

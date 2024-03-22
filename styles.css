@@ -77,7 +77,7 @@ input:focus {
   align-items: center;
 }
 
-.playerText {
+.playerInfoGroup {
   min-width: 11.25vh;
   width: 15vh;
   max-width: calc(15vw - 0.75vh);
